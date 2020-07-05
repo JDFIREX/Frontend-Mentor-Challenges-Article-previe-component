@@ -16,21 +16,42 @@ function shareImgAnimation(e){
 
 
 // animation
+
     if(!shareImgActive){
 
-        shareSection.style.top = (shareImgCoords.top - 80) + "px";;
+        
+        if(window.innerWidth <= 550){
+            shareSection.style.top = (shareImgCoords.top - 34) + "px";;
+        }else{
+            shareSection.style.top = (shareImgCoords.top - 80) + "px";;
+        }
         shareSection.style.backgroundColor = `hsl(217, 19%, 35%)`;
         setTimeout(() => {
             shareSection.style.left = (shareImgCoords.left - 112) + "px";
+            if(window.innerWidth <= 1000){
+                shareSection.style.left = (shareImgCoords.left -182) + "px";
+            }
             shareSection.style.width =`250px`;
             shareSection.style.height = `50px`;
             shareSection.style.borderRadius = `10px`;
             e.path[0].src = `images/icon-share_white.svg`;
             shareImg.style.backgroundColor = `hsl(217, 19%, 35%)`;
+            if(window.innerWidth <= 550){
+                shareImg.style.backgroundColor =`hsl(214, 17%, 51%)`
+                shareSection.style.borderRadius = `10px`;
+                shareSection.style.borderTopLeftRadius = `0px`;
+                shareSection.style.borderTopRightRadius = `0px`;
+                shareSection.style.width =`468.76px`;
+                shareSection.style.height = `100px`;
+                shareSection.style.left = (shareImgCoords.left - 355) + "px";
+            }
         }, 220);
         setTimeout(() => {
             shareArrow.style.top = `37.5px`;
             shareArrow.style.visibility = `visible`;
+            if(window.innerWidth <= 550){
+                shareArrow.style.visibility = `hidden`;
+            }
         }, 450);
         setTimeout(() => {
             shareBox.style.visibility = `visible`;
@@ -66,13 +87,13 @@ function shareImgAnimation(e){
 }
 
 function shareSectionPosition(e) {
+
     let shareImgCoords = shareImg.getBoundingClientRect();
 
     let shareSection = document.querySelector('.share_section');
 
     shareSection.style.top = shareImgCoords.top + "px";
     shareSection.style.left = shareImgCoords.left + "px";
-
 
 
 }
